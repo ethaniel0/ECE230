@@ -1,4 +1,4 @@
-from crystal import Crystal
+from ece230.crystals.crystal import Crystal
 
 class SimpleCubic(Crystal):
    

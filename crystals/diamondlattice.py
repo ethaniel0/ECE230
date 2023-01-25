@@ -1,4 +1,4 @@
-from crystal import Crystal
+from ece230.crystals.crystal import Crystal
 import sympy as sp
 
 class DiamondLattice(Crystal):
