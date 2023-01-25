@@ -1,4 +1,5 @@
 from crystal import Crystal
+import sympy as sp
 
 class DiamondLattice(Crystal):
 
@@ -16,3 +17,14 @@ class DiamondLattice(Crystal):
             effective_atoms=8, 
             lattice_constant=lattice_constant,
             atomic_mass=atomic_mass)
+
+
+
+    def calc_center_to_center_dist(self):
+        '''Calculate the center to center distance for a diamond lattice
+        '''
+        # Calculate the center to center distance by making a triangle
+        #Uses corner atom and bonding atom
+        base = sp.sqrt(2) * self.LATTICE_CONSTANT / 4
+        height = self.LATTICE_CONSTANT / 4
+        return sp.sqrt(base**2 + height**2)

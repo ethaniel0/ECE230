@@ -8,6 +8,7 @@ class Crystal:
     ATOM_CONCENTRATION: float in N/cm^3, concentration of atoms in unit cell
     MASS_DENSITY: float in g/cm^3, mass density of unit cell
     '''
+    AVOGADROS_NUMBER = 6.02214076e23
 
     def __init__(self, atoms=0, effective_atoms=0, atomic_mass=0.0, lattice_constant=0.0, unit_cell_volume=0.0):
         self.NUM_ATOMS: int = atoms
@@ -15,7 +16,7 @@ class Crystal:
         self.ATOMIC_MASS: float = atomic_mass
         self.LATTICE_CONSTANT: float = lattice_constant
         self.UNIT_CELL_VOLUME: float = unit_cell_volume
-        self.ATOM_CONECNTRATION: float = 0.0
+        self.ATOM_CONCENTRATION: float = 0.0
         self.MASS_DENSITY: float = 0.0
 
     def calc_nearest_neighbor_dist():
@@ -26,10 +27,10 @@ class Crystal:
     def calc_atom_concentration(self):
         '''Calculate the atom concentration for a crystal in (N/cm^3)
         '''
-        self.ATOM_CONECNTRATION = self.EFFECTIVE_ATOMS / self.UNIT_CELL_VOLUME
+        self.ATOM_CONCENTRATION = self.EFFECTIVE_ATOMS / self.UNIT_CELL_VOLUME
 
     def calc_mass_density(self):
         '''Calculate the mass density for a crystal in (g/cm^3)
         '''
-        AVOGADROS_NUMBER = 6.02214076e23
-        self.MASS_DENSITY = self.ATOM_CONECNTRATION * self.ATOMIC_MASS / AVOGADROS_NUMBER
+        self.MASS_DENSITY = self.ATOM_CONCENTRATION * self.ATOMIC_MASS / self.AVOGADROS_NUMBER
+
