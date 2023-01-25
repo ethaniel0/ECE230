@@ -1,6 +1,6 @@
 import sympy as sp
 
-def calc_miller_inds(x: float, y: float, z: float) -> tuple[int, int, int]:
+def calc_miller_inds(x: float | str, y: float | str, z: float | str) -> tuple[int, int, int]:
     """Calculate the Miller indices for a crystal given the lattice parameters.
     Args:
         x: The x intercept.
@@ -36,7 +36,7 @@ def calc_miller_inds_decimal(x: float, y: float, z: float) -> tuple[float, float
     
     Process:
         1. Indices h, k, l = 1/x, 1/y, and 1/z respectively
-        2. Multiply each index by the smallest number such that all indices are integers
+        2. 2. Multiply each index by a number such that the smallest number = 1
     """
     h , k, l = 1/x, 1/y, 1/z
 

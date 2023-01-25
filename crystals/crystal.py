@@ -6,11 +6,13 @@ class Crystal:
     LATTICE_CONSTANT: float in angstroms, length of unit cell edge
     UNIT_CELL_VOLUME: float in angstroms^3, volume of unit cell
     '''
-    NUM_ATOMS: int = 0
-    EFFECTIVE_ATOMS: float = 0
-    ATOMIC_MASS: float = 0.0
-    LATTICE_CONSTANT: float = 0.0
-    UNIT_CELL_VOLUME: float = 0.0
+
+    def __init__(self, atoms=0, effective_atoms=0, atomic_mass=0.0, lattice_constant=0.0, unit_cell_volume=0.0):
+        self.NUM_ATOMS: int = atoms
+        self.EFFECTIVE_ATOMS: float = effective_atoms
+        self.ATOMIC_MASS: float = atomic_mass
+        self.LATTICE_CONSTANT: float = lattice_constant
+        self.UNIT_CELL_VOLUME: float = unit_cell_volume
 
     def calc_nearest_neighbor_dist():
         '''Calculate the nearest neighbor distance for a crystal
