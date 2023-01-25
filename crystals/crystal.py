@@ -19,17 +19,17 @@ class Crystal:
         self.ATOM_CONCENTRATION: float = 0.0
         self.MASS_DENSITY: float = 0.0
 
-    def calc_nearest_neighbor_dist():
+    def nearest_neighbor_dist():
         '''Calculate the nearest neighbor distance for a crystal
         '''
         pass
 
-    def calc_atom_concentration(self):
+    def atom_concentration(self):
         '''Calculate the atom concentration for a crystal in (N/cm^3)
         '''
         self.ATOM_CONCENTRATION = self.EFFECTIVE_ATOMS / self.UNIT_CELL_VOLUME
 
-    def calc_mass_density(self):
+    def mass_density(self):
         '''Calculate the mass density for a crystal in (g/cm^3)
         '''
         self.MASS_DENSITY = self.ATOM_CONCENTRATION * self.ATOMIC_MASS / self.AVOGADROS_NUMBER

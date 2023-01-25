@@ -5,6 +5,7 @@ import numpy as np
 class SimpleCubic(Crystal):
     NUM_ATOMS: int = 8
     EFFECTIVE_ATOMS: float = 1
+    BOND_ANGLE: float = sp.acos(-1/3)
    
     def __init__(self, lattice_constant=1.0) -> None:
         '''A simple cubic crystal, inheriting from Crystal
@@ -42,7 +43,7 @@ class DiamondLattice(Crystal):
 
 
 
-    def calc_center_to_center_dist(self) -> sp.Rational:
+    def center_to_center_dist(self) -> sp.Rational:
         '''Calculate the center to center distance between atoms for a diamond lattice
         '''
         # Calculate the center to center distance by making a triangle
