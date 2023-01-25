@@ -1,4 +1,4 @@
-from ece230.crystals.diamondlattice import DiamondLattice
+from ece230.crystals.unit_cells import DiamondLattice
 
 class Silicon(DiamondLattice):
     '''Silicon class
