@@ -10,4 +10,6 @@ class Silicon(DiamondLattice):
             lattice_constant=5.43095, 
             atomic_mass=28.0855)
 
+        self.calc_mass_density()
+
 

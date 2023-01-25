@@ -1,5 +1,6 @@
 from ece230.crystals.crystal import Crystal
 import sympy as sp
+import numpy as np
 
 class SimpleCubic(Crystal):
     NUM_ATOMS: int = 8
@@ -19,9 +20,6 @@ class SimpleCubic(Crystal):
             effective_atoms=SimpleCubic.EFFECTIVE_ATOMS, 
             lattice_constant=lattice_constant)
 
-if __name__ == "__main__":
-    sc = SimpleCubic()
-    print(sc.NUM_ATOMS)
 
 class DiamondLattice(Crystal):
     NUM_ATOMS: int = 18
@@ -44,11 +42,12 @@ class DiamondLattice(Crystal):
 
 
 
-    def calc_center_to_center_dist(self):
-        '''Calculate the center to center distance for a diamond lattice
+    def calc_center_to_center_dist(self) -> sp.Rational:
+        '''Calculate the center to center distance between atoms for a diamond lattice
         '''
         # Calculate the center to center distance by making a triangle
         #Uses corner atom and bonding atom
-        base = sp.sqrt(2) * self.LATTICE_CONSTANT / 4
-        height = self.LATTICE_CONSTANT / 4
+        base = sp.sqrt(2) * sp.Rational(self.LATTICE_CONSTANT, 4)
+        height = sp.Rational(self.LATTICE_CONSTANT, 4)
         return sp.sqrt(base**2 + height**2)
+
