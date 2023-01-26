@@ -1,12 +1,12 @@
 from ece230.crystals.crystal import Crystal
+from ece230.crystals.unit_num import UnitNum
 import sympy as sp
 import numpy as np
 
 class SimpleCubic(Crystal):
     NUM_ATOMS: int = 8
     EFFECTIVE_ATOMS: float = 1
-    BOND_ANGLE: float = sp.acos(-1/3)
-   
+    
     def __init__(self, lattice_constant=1.0) -> None:
         '''A simple cubic crystal, inheriting from Crystal
         NUM_ATOMS: 8 atoms in unit cell
@@ -15,16 +15,27 @@ class SimpleCubic(Crystal):
         LATTICE_CONSTANT: float in angstroms, length of unit cell edge
         UNIT_CELL_VOLUME: float in angstroms^3, volume of unit cell
         '''
+        
         self.__doc__ = Crystal.__doc__
         super().__init__(
             atoms=SimpleCubic.NUM_ATOMS, 
             effective_atoms=SimpleCubic.EFFECTIVE_ATOMS, 
             lattice_constant=lattice_constant)
+        
+        self.UNIT_CELL_VOLUME = UnitNum(lattice_constant**3, "Å^3")
+    
+    def nearest_neighbor_dist(self) -> sp.Rational:
+        '''Calculate the nearest neighbor distance for a simple cubic crystal
+        '''
+        return self.LATTICE_CONSTANT
+
+    
 
 
 class DiamondLattice(Crystal):
     NUM_ATOMS: int = 18
     EFFECTIVE_ATOMS: float = 8
+    BOND_ANGLE: float = UnitNum(sp.acos(-1/3), 'rad')
 
     def __init__(self, lattice_constant=1.0, atomic_mass=1) -> None:
         '''A diamond lattice crystal, inheriting from Crystal
@@ -40,8 +51,8 @@ class DiamondLattice(Crystal):
             effective_atoms=DiamondLattice.EFFECTIVE_ATOMS, 
             lattice_constant=lattice_constant,
             atomic_mass=atomic_mass)
-
-
+        
+        self.UNIT_CELL_VOLUME = self.LATTICE_CONSTANT**3
 
     def center_to_center_dist(self) -> sp.Rational:
         '''Calculate the center to center distance between atoms for a diamond lattice
@@ -50,5 +61,4 @@ class DiamondLattice(Crystal):
         #Uses corner atom and bonding atom
         base = sp.sqrt(2) * sp.Rational(self.LATTICE_CONSTANT, 4)
         height = sp.Rational(self.LATTICE_CONSTANT, 4)
-        return sp.sqrt(base**2 + height**2)
-
+        return UnitNum(sp.sqrt(base**2 + height**2), 'Å')
