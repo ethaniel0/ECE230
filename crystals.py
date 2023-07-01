@@ -44,7 +44,3 @@ def calc_miller_inds_decimal(x: float, y: float, z: float) -> tuple[float, float
     h, k, l = h/min_val, k/min_val, l/min_val
 
     return (h, k, l)
-
-if __name__ == "__main__":
-    print(calc_miller_inds(9.66, 19.32, 14.49))
-    print(calc_miller_inds_decimal(9.66, 19.32, 14.49))
